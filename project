@@ -1,0 +1,118 @@
+# Text-Generator
+#import dependencies
+import numpy
+import sys
+import nltk
+nltk.download('stopwords')
+from nltk.tokenize import Regextokenizer
+from nltk.oorpos import stopwords
+from keras.modelx import Sequential
+from keras.layers import Dense,Dropout,LSTM
+from keras.vtiln import np_utils
+from keras.callbacks import ModelCheckpoint
+
+
+
+
+# load data
+# standerdaization
+file = open("frankentein-2.txt").read()
+
+
+
+# tokenization
+# standardization
+def tokenize_words(input):
+    input = input.lower ()
+    tokenizer = Regexptokenizer(r'\w+')
+    tokens = tokenizer.tokenize(input)
+    filtered = filter(lambda token: token not in stopwords.words('english'),tokens)
+    return ''.join(filtered)
+    processed_inputs = tokenize_words(file)
+    
+    
+    
+    
+    #chars to numbers
+chars = sorted(list(set(processed_input)))
+char_to_num = dict((c,i) for i,c in enumerate(chars))
+
+
+
+#check if words to chars or chars to num (?!) has worked?
+input_len = len(processed inputs)
+vocab_len = len(chars)
+print("Total number of characters:",input_len)
+print("Total vocab:",vocab_len)
+
+
+
+
+#seg length
+seg length = 100
+x_axis = []
+y_axis = []
+
+
+#loop through the sequence
+for i in range(0,input_len-seg_length,1):
+    in_seq = processed_inputs[i:i + seq_length]
+    out_seq = processed_inputs[i + seq_length]
+    x_data.append([char_to_num[char] for char in in_seq])
+    y_data.append([char_to_num[out_seq]])
+    n_parameters = len(x_data)
+    print("Total paterns",n_patterns)
+    
+    
+    #convert input sequence to np  array and so on
+x = numpy.reshape(x_data,(n_patterns,seq_length,1))
+x = x/float(vocab_len)
+
+
+#convert input sequence to np  array and so on
+x = numpy.reshape(x_data,(n_patterns,seq_length,1))
+x = x/float(vocab_len)
+
+
+
+
+#creating the mode1
+mode1 = sequential()
+mode1.add(LSTM (256,input_shape(x.shape[1],x.shape[2],return_sequences=True)) 
+mode1.add(Dropout(0,2))
+mode1.add(LSTM (256, return_sequences))
+mode1.add(Dropout(0,2))
+mode1.add(LSTM 120)
+mode1.add(Dropout(0,2))
+mode1.add(dense[y.shape[1],activation='softmax')
+                
+                                              
+  #creating the mode1
+mode1 = sequential()
+mode1.add(LSTM (256,input_shape(x.shape[1],x.shape[2],return_sequences=True)) 
+mode1.add(Dropout(0,2))
+mode1.add(LSTM (256, return_sequences))
+mode1.add(Dropout(0,2))
+mode1.add(LSTM 120)
+mode1.add(Dropout(0,2))
+mode1.add(dense[y.shape[1],activation='softmax')
+
+
+
+#recompile with the same weights
+filename = 'model_weights_saved.hdf5'
+mode1.load_weights(filename)
+mode1.compile (loss="categorical_crossentropy",optimizer='adam')
+                
+                                              
+ #generate the text
+for i in range(1000)
+x = numpy.reshape(pattern,(1,len(pattern),1))
+x = float(vocab_len)
+predection = model.predict(x,verbose=0)
+index = numpy.arqmax(prediction)
+result =num_to_char[index]
+seq_in = [num_to_char(value) for value in pattern]
+sys.stdout.write(result)
+pattern.speed(index)
+pattern = pattern[1:len(pattern)]                                                                                         
